@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+{%block title%}
+Game and code
+{% endblock %}
+
+{% block content %}
+<h1 class="text-center mt-4">Welcome to Game Django's project</h1>
+<h2>
+    {% if form.instance.pk %}
+    Edit Blog
+    {% else %}
+    Create blog
+    {% endif %}
+</h2>
+    <form method="post" enctype="multipart/form-data" class="form">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button class="btn btn-warning" type="submit">Submit</button>
+    </form>
+    <a href="{% url 'blog_list'%}">Back to blogs</a>
+
+{%endblock%}
